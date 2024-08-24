@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://cfpomobyjf4ey"]
+
+[ext_resource type="Script" path="res://tree.gd" id="1_8tvx7"]
+[ext_resource type="Texture2D" uid="uid://byrlhc8y443ke" path="res://All/Assets/Terrain/Tree.png" id="2_1t24e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aotp4"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ixl"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ykb3"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqxnf"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o6bk"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx07i"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2puni"]
+atlas = ExtResource("2_1t24e")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pl8ru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aotp4")
+}],
+"loop": true,
+"name": &"change_to_stump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ixl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ykb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqxnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o6bk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx07i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2puni")
+}],
+"loop": true,
+"name": &"get_hitted",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2hps"]
+size = Vector2(40, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_biwfa"]
+size = Vector2(34, 29.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk1gs"]
+size = Vector2(31, 26)
+
+[node name="Tree" type="RigidBody2D"]
+script = ExtResource("1_8tvx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_pl8ru")
+autoplay = "default"
+frame_progress = 0.350959
+
+[node name="default_collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, 50)
+shape = SubResource("RectangleShape2D_c2hps")
+
+[node name="TreeKillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeKillArea"]
+position = Vector2(1, 62.625)
+shape = SubResource("RectangleShape2D_biwfa")
+
+[node name="ifDeadCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 63)
+shape = SubResource("RectangleShape2D_jk1gs")
+
+[connection signal="area_entered" from="TreeKillArea" to="." method="_on_kill_area_area_entered"]

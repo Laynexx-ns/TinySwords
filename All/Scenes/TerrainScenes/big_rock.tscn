@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcyvluujw4pb2"]
+
+[ext_resource type="Texture2D" uid="uid://dbifswdn20rel" path="res://All/Assets/Terrain/Rocks_04.png" id="1_g4t42"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovpfe"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f3o8"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjyg7"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tfj6"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpjxs"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu28u"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os4o0"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbs4y"]
+atlas = ExtResource("1_g4t42")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7esa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovpfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f3o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjyg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tfj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpjxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu28u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os4o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbs4y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="BigRock" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7esa3")
+autoplay = "default"
+frame_progress = 0.60671

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyspbaluaj86c"]
+
+[ext_resource type="Texture2D" uid="uid://snneyi3cceqa" path="res://All/Assets/Terrain/01.png" id="1_k1fyb"]
+
+[node name="smallMushroom" type="TextureRect"]
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 31.0
+offset_bottom = 31.0
+texture = ExtResource("1_k1fyb")

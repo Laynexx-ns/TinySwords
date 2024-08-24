@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgi1vhm1x3j1j"]
+
+[ext_resource type="Texture2D" uid="uid://cmc8fi2ioyx30" path="res://All/Assets/Terrain/09.png" id="1_l4264"]
+
+[node name="bigBush" type="TextureRect"]
+offset_left = -33.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 33.0
+texture = ExtResource("1_l4264")
