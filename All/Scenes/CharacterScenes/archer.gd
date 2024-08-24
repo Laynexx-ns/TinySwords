@@ -11,7 +11,7 @@ var first_dir = null
 var second_dir = null
 
 var walking : bool = true
-var canmove : bool = false
+var canmove : bool = true
 var attack : bool = false
 
 func _physics_process(delta: float) -> void:
@@ -42,10 +42,10 @@ func attacking():
 		animated_sprite_2d.animation = "right_attacking"
 		await get_tree().create_timer(0.8).timeout
 		var arrow = newArrow.instantiate()
-		if (first_dir == enum_dir.RIGHT):
+		if (animated_sprite_2d.flip_h == false):
 			arrow.create(position, Vector2(1, 0), 0)
 		else:
-			arrow.create(position, Vector2(-1, 0), 180)
+			arrow.create(position, Vector2(-1, 0), -180)
 		get_parent().add_child(arrow)		
 	
 	elif (first_dir == enum_dir.DOWN and first_dir == second_dir):
@@ -66,13 +66,19 @@ func attacking():
 		animated_sprite_2d.animation = "downright_attacking"
 		await get_tree().create_timer(0.8).timeout
 		var arrow = newArrow.instantiate()
-		arrow.create(position, Vector2(1, 1), 40)
+		if (animated_sprite_2d.flip_h == false):
+			arrow.create(position, Vector2(1, 1), 45)
+		else:
+			arrow.create(position, Vector2(-1, 1), 135)
 		get_parent().add_child(arrow)
 	elif (first_dir == enum_dir.UP and second_dir == enum_dir.RIGHT or first_dir == enum_dir.RIGHT and second_dir == enum_dir.UP or first_dir == enum_dir.UP and second_dir == enum_dir.LEFT or first_dir == enum_dir.LEFT and second_dir == enum_dir.UP):
 		animated_sprite_2d.animation = "upright_attacking"
 		await get_tree().create_timer(0.8).timeout
 		var arrow = newArrow.instantiate()
-		arrow.create(position, Vector2(1, -1), 305)
+		if (animated_sprite_2d.flip_h == false):
+			arrow.create(position, Vector2(1, -1), 305)
+		else:
+			arrow.create(position, Vector2(-1, -1), 225)
 		get_parent().add_child(arrow)
 	
 	

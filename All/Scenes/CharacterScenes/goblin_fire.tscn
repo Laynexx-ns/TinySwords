@@ -264,7 +264,7 @@ radius = 57.0088
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy1on"]
 size = Vector2(51, 47.1875)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Goblin" type="CharacterBody2D"]
 physics_interpolation_mode = 2
 scale = Vector2(0.8, 0.8)
 floor_stop_on_slope = false
