@@ -112,4 +112,5 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4ak64")
 autoplay = "default"
-frame_progress = 0.348476
+frame = 13
+frame_progress = 1.0

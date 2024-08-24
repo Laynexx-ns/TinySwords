@@ -256,7 +256,7 @@ size = Vector2(41, 19)
 size = Vector2(40, 61)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80kvm"]
-radius = 329.006
+radius = 462.743
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hpln"]
 radius = 57.0088
@@ -282,9 +282,9 @@ frame_progress = 0.0440118
 position = Vector2(1.5, 20.5)
 shape = SubResource("RectangleShape2D_csvko")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EnemyKillArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillArea"]
 position = Vector2(2, 0.5)
 shape = SubResource("RectangleShape2D_bfclo")
 
@@ -320,8 +320,8 @@ position = Vector2(4, -35)
 shape = SubResource("RectangleShape2D_iy1on")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_entered" from="EnemyKillArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="EnemyKillArea" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Viewing_area" to="." method="_on_viewing_area_body_entered"]
 [connection signal="body_exited" from="Viewing_area" to="." method="_on_viewing_area_body_exited"]
 [connection signal="area_entered" from="Stop_Area" to="." method="_on_stop_area_area_entered"]

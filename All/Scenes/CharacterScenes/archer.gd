@@ -4,6 +4,8 @@ extends CharacterBody2D
 const speed = 150.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@export var newArrow : PackedScene
+
 enum enum_dir {LEFT, RIGHT, UP ,DOWN}
 var first_dir = null
 var second_dir = null
@@ -39,21 +41,39 @@ func attacking():
 	if (first_dir == enum_dir.RIGHT or first_dir == enum_dir.LEFT and first_dir == second_dir):
 		animated_sprite_2d.animation = "right_attacking"
 		await get_tree().create_timer(0.8).timeout
+		var arrow = newArrow.instantiate()
+		if (first_dir == enum_dir.RIGHT):
+			arrow.create(position, Vector2(1, 0), 0)
+		else:
+			arrow.create(position, Vector2(-1, 0), 180)
+		get_parent().add_child(arrow)		
 	
 	elif (first_dir == enum_dir.DOWN and first_dir == second_dir):
 		animated_sprite_2d.animation = "down_attacking"
 		await get_tree().create_timer(0.8).timeout
+		var arrow = newArrow.instantiate()
+		arrow.create(position, Vector2(0, 1), 90)
+		get_parent().add_child(arrow)
+		
 	elif (first_dir == enum_dir.UP and first_dir == second_dir):
 		animated_sprite_2d.animation = "up_attacking"
 		await get_tree().create_timer(0.8).timeout
-		
+		var arrow = newArrow.instantiate()
+		arrow.create(position, Vector2(0, -1), 270)
+		get_parent().add_child(arrow)
 	##other
 	elif (first_dir == enum_dir.DOWN and second_dir == enum_dir.RIGHT or first_dir == enum_dir.RIGHT and second_dir == enum_dir.DOWN or first_dir == enum_dir.DOWN and second_dir == enum_dir.LEFT or first_dir == enum_dir.LEFT and second_dir == enum_dir.DOWN):
 		animated_sprite_2d.animation = "downright_attacking"
 		await get_tree().create_timer(0.8).timeout
+		var arrow = newArrow.instantiate()
+		arrow.create(position, Vector2(1, 1), 40)
+		get_parent().add_child(arrow)
 	elif (first_dir == enum_dir.UP and second_dir == enum_dir.RIGHT or first_dir == enum_dir.RIGHT and second_dir == enum_dir.UP or first_dir == enum_dir.UP and second_dir == enum_dir.LEFT or first_dir == enum_dir.LEFT and second_dir == enum_dir.UP):
 		animated_sprite_2d.animation = "upright_attacking"
 		await get_tree().create_timer(0.8).timeout
+		var arrow = newArrow.instantiate()
+		arrow.create(position, Vector2(1, -1), 305)
+		get_parent().add_child(arrow)
 	
 	
 	
@@ -78,7 +98,7 @@ func movement():
 		first_dir = enum_dir.UP
 	if(Input.is_action_pressed("second_player_down")):
 		second_dir = first_dir
-		first_dir = enum_dir.DOWN	
+		first_dir = enum_dir.DOWN
 
 	print(first_dir)
 	print(second_dir)

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var enemy_sword_area: Area2D = $EnemySwordArea
 
 const SPEED = 100
+#const SPEED = 0
 const JUMP_VELOCITY = -400.0
 
 enum dirLR {LEFT, RIGHT}
@@ -132,6 +133,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if (area.name == "SwordArea"):
 		print("taked damage: goblinus")
 		hearts -=1
+	if (area.name == "ArrowArea"):
+		print("aa")
+		hearts -= 2
 	
 	
 func dead():

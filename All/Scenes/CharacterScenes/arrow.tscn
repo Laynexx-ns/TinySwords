@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d03of2vx2hexp"]
+
+[ext_resource type="Script" path="res://arrow.gd" id="1_v8k4o"]
+[ext_resource type="Texture2D" uid="uid://nb7ttm18a8y1" path="res://All/Assets/CharacterAssets/Arrow.png" id="2_weply"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24mso"]
+atlas = ExtResource("2_weply")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1ea8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24mso")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbwje"]
+size = Vector2(50, 14)
+
+[node name="Arrow" type="AnimatableBody2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_v8k4o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_c1ea8")
+
+[node name="ArrowArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowArea"]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_fbwje")
+
+[connection signal="body_entered" from="ArrowArea" to="." method="_on_arrow_area_body_entered"]

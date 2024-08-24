@@ -9880,10 +9880,10 @@ input_pickable = true
 position = Vector2(2061, -245)
 
 [node name="CharacterBody2D" parent="SceneObjs/Characters" instance=ExtResource("5_rrvmp")]
-position = Vector2(2073, -112)
+position = Vector2(1224, 166)
 
 [node name="Knight" parent="SceneObjs/Characters" node_paths=PackedStringArray("hearts", "trees_text") instance=ExtResource("3_pl0le")]
-position = Vector2(673, 150)
+position = Vector2(730, 126)
 hearts = [NodePath("Camera2D/HpPanel/TextureRect"), NodePath("Camera2D/HpPanel/TextureRect2"), NodePath("Camera2D/HpPanel/TextureRect3")]
 trees_text = NodePath("Camera2D/TreePanel/Label")
 
@@ -9983,5 +9983,5 @@ script = ExtResource("12_u85rb")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Archer" parent="." instance=ExtResource("17_h0dtg")]
-position = Vector2(1269, 160)
+position = Vector2(811, 165)
 motion_mode = 1
