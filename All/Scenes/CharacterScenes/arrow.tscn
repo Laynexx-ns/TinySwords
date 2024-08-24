@@ -37,7 +37,6 @@ position = Vector2(0, 2.38419e-07)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowArea"]
 position = Vector2(-4.76837e-07, -4.76837e-07)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fbwje")
 
 [connection signal="area_entered" from="ArrowArea" to="." method="_on_arrow_area_area_entered"]

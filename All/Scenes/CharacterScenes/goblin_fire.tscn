@@ -256,7 +256,7 @@ size = Vector2(41, 19)
 size = Vector2(40, 61)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80kvm"]
-radius = 462.743
+radius = 1903.83
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5hpln"]
 radius = 57.0088
@@ -290,7 +290,6 @@ shape = SubResource("RectangleShape2D_bfclo")
 
 [node name="Viewing_area" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="viewing_collision" type="CollisionShape2D" parent="Viewing_area"]
 shape = SubResource("CircleShape2D_80kvm")
