@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxm0fj6cw0yir"]
+
+[ext_resource type="Texture2D" uid="uid://bv378kyj6bfym" path="res://All/Assets/Terrain/03.png" id="1_hcx5v"]
+
+[node name="BigMushroom" type="TextureRect"]
+offset_left = -33.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 33.0
+texture = ExtResource("1_hcx5v")

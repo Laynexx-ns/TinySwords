@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf1nrks3vlxe2"]
+
+[ext_resource type="Texture2D" uid="uid://ssjrn087i7mc" path="res://All/Assets/Terrain/07.png" id="1_v8sny"]
+
+[node name="small_bush" type="TextureRect"]
+offset_left = -30.0
+offset_top = -32.0
+offset_right = 34.0
+offset_bottom = 32.0
+texture = ExtResource("1_v8sny")

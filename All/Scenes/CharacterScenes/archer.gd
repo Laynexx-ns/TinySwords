@@ -1,18 +1,24 @@
 extends CharacterBody2D
 
 
-const speed = 150.0
+const speed = 200.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var newArrow : PackedScene
+@export var hearts : Array[Node]
+@export var deathef : PackedScene
 
 enum enum_dir {LEFT, RIGHT, UP ,DOWN}
 var first_dir = null
 var second_dir = null
 
+var isAlive : bool = true
 var walking : bool = true
 var canmove : bool = true
 var attack : bool = false
+
+var health : int = 2
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -120,3 +126,35 @@ func movement():
 		walking = true
 		
 	move_and_slide()
+
+
+func _on_kill_area_area_entered(area: Area2D) -> void:
+	if (area.name == "EnemySwordArea"):
+		print("aspeofowpef")
+		loseHeart()
+
+
+func loseHeart():
+	if (isAlive):
+		health -=1
+		for h in 2:
+			if (health< h+1):
+				hearts[h].hide()
+			
+	if (health == 0 and isAlive):
+		go_dead()
+		var death_effect = deathef.instantiate()
+		death_effect.position = position
+		get_parent().add_child(death_effect)
+		print(position.x)
+		print(position.y)
+		animated_sprite_2d.hide()
+		await get_tree().create_timer(2.1).timeout
+		death_effect.queue_free()
+		get_tree().reload_current_scene()
+		queue_free()
+
+func go_dead():
+	isAlive = false
+	canmove = false
+	attack = true

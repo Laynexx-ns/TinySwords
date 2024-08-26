@@ -1,8 +1,9 @@
-[gd_scene load_steps=59 format=3 uid="uid://bmip2km2sfu2x"]
+[gd_scene load_steps=60 format=3 uid="uid://bmip2km2sfu2x"]
 
 [ext_resource type="Script" path="res://All/Scenes/CharacterScenes/archer.gd" id="1_5io27"]
 [ext_resource type="Texture2D" uid="uid://cqmllvb1hiihj" path="res://All/Assets/CharacterAssets/Archer_Blue.png" id="2_h76dl"]
 [ext_resource type="PackedScene" uid="uid://d03of2vx2hexp" path="res://All/Scenes/CharacterScenes/arrow.tscn" id="2_vel15"]
+[ext_resource type="PackedScene" uid="uid://bs28vkmdg7k0d" path="res://All/Scenes/Death_effect.tscn" id="3_t5nhx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck6oc"]
 atlas = ExtResource("2_h76dl")
@@ -410,13 +411,15 @@ animations = [{
 size = Vector2(43, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yyxs"]
-radius = 340.009
+radius = 27.5284
 
-[node name="Archer" type="CharacterBody2D"]
+[node name="Archer" type="CharacterBody2D" node_paths=PackedStringArray("hearts")]
 texture_filter = 1
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_5io27")
 newArrow = ExtResource("2_vel15")
+hearts = [null, null]
+deathef = ExtResource("3_t5nhx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wmta7")
@@ -428,8 +431,10 @@ frame_progress = 0.0167566
 position = Vector2(-1.5, 24.5)
 shape = SubResource("RectangleShape2D_0n4xv")
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
+[node name="KillArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(-1.25, 3.75)
 shape = SubResource("CircleShape2D_0yyxs")
+
+[connection signal="area_entered" from="KillArea" to="." method="_on_kill_area_area_entered"]

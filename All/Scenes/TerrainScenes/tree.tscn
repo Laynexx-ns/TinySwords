@@ -89,16 +89,19 @@ autoplay = "default"
 frame_progress = 0.350959
 
 [node name="default_collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 50)
 shape = SubResource("RectangleShape2D_c2hps")
 
 [node name="TreeKillArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeKillArea"]
 position = Vector2(1, 62.625)
 shape = SubResource("RectangleShape2D_biwfa")
 
 [node name="ifDeadCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1.5, 63)
 shape = SubResource("RectangleShape2D_jk1gs")
 

@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var enemy_sword_area: Area2D = $EnemySwordArea
 
-const SPEED = 100
+#speed was 100
+const SPEED = 200
 #const SPEED = 0
 const JUMP_VELOCITY = -400.0
 
@@ -21,8 +22,6 @@ var hearts = 2
 @onready var down_sword_collision: CollisionShape2D = $EnemySwordArea/down_sword_collision
 @onready var left_sword_collision: CollisionShape2D = $EnemySwordArea/left_sword_collision
 @onready var up_sword_collision: CollisionShape2D = $EnemySwordArea/up_sword_collision
-
-@onready var ReakKnight: CharacterBody2D = $"."
 
 @export var death_effect : PackedScene
 
@@ -86,30 +85,30 @@ func attack():
 	velocity.y = 0
 	#print(knight.position.x - position.x)
 	#print(knight.position.y - position.y)
-	
-	if (knight.position.x - position.x < -10):
-		animated_sprite_2d.flip_h = true
-		animated_sprite_2d.animation = "right_attacking"
-		await get_tree().create_timer(0.6).timeout
-		left_sword_collision.disabled = false
-		await get_tree().create_timer(0.1).timeout
-	elif ((knight.position.x - position.x) > 10):
-		animated_sprite_2d.animation = "right_attacking"
-		await get_tree().create_timer(0.6).timeout
-		right_sword_collision.disabled = false
-		await get_tree().create_timer(0.1).timeout
-	else:
-		if 	knight.position.y - position.y > 10:
-			animated_sprite_2d.animation = "down_attacking"
+	if (knight != null):
+		if (knight.position.x - position.x < -10):
+			animated_sprite_2d.flip_h = true
+			animated_sprite_2d.animation = "right_attacking"
 			await get_tree().create_timer(0.6).timeout
-			down_sword_collision.disabled = false
+			left_sword_collision.disabled = false
+			await get_tree().create_timer(0.1).timeout
+		elif ((knight.position.x - position.x) > 10):
+			animated_sprite_2d.animation = "right_attacking"
+			await get_tree().create_timer(0.6).timeout
+			right_sword_collision.disabled = false
 			await get_tree().create_timer(0.1).timeout
 		else:
-			animated_sprite_2d.animation = "up_attacking"
-			await get_tree().create_timer(0.6).timeout
-			up_sword_collision.disabled = false
-			await get_tree().create_timer(0.1).timeout
-			
+			if 	knight.position.y - position.y > 10:
+				animated_sprite_2d.animation = "down_attacking"
+				await get_tree().create_timer(0.6).timeout
+				down_sword_collision.disabled = false
+				await get_tree().create_timer(0.1).timeout
+			else:
+				animated_sprite_2d.animation = "up_attacking"
+				await get_tree().create_timer(0.6).timeout
+				up_sword_collision.disabled = false
+				await get_tree().create_timer(0.1).timeout
+				
 	##why it doesn't work(((
 	
 	disable_all_swords_collisions()
@@ -148,7 +147,7 @@ func dead():
 	animated_sprite_2d.hide()
 
 func _on_viewing_area_body_entered(body: Node2D) -> void:
-	if (body.name == "Knight"):
+	if (body.name == "Knight" or body.name == "Archer"):
 		print("knigt here!!")
 		knight = body
 		
@@ -160,6 +159,6 @@ func disable_all_swords_collisions():
 	up_sword_collision.disabled = true
 
 func _on_viewing_area_body_exited(body: Node2D) -> void:
-	if (body.name == "Knight"):
+	if (body.name == "Knight" or body.name == "Archer"):
 		knight = null
 		walk = false

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var left_sword_collision: CollisionShape2D = %LeftSwordCollision
 @onready var down_sword_collision: CollisionShape2D = %DownSwordCollision
 @onready var up_sword_collision: CollisionShape2D = %UpSwordCollision
+@onready var label: Label = $"../../../Archer/ArcherCamera/TreePanel2/Label"
 
 @export var DeathEffect : PackedScene
 @export var hearts : Array[Node]
@@ -17,7 +18,7 @@ var trees_count : int = 0
 
 ##useless piece of ...
 #speed was 250
-const SPEED = 250
+const SPEED = 1000
 const JUMP_VELOCITY = -400.0
 
 ##movement values
@@ -201,4 +202,5 @@ func _on_sword_area_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(0.2).timeout
 		trees_count += 1
 		trees_text.text = str(trees_count)
+		label.text = str(trees_count)
 		
